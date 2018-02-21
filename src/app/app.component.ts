@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'; //es6 module
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root', //snake casing
+    template: '<app-home></app-home>'
 })
 export class AppComponent {
-  title = 'app';
+
 }
