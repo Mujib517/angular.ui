@@ -3,30 +3,36 @@ import { Component } from "@angular/core";
 @Component({
     selector: 'app-home',
     template: `
+    <div *ngIf="show">
+        ...
+        ...
+        <h1 >Home Page</h1>
+    </div>
 
-    <h1 [class.red]="myProperty">Home Page</h1>
-    <h1 [style.border]="myProperty?'1px solid black':'none'">Heading</h1>
 
-    <button (click)="onClick(10)">Button 2</button>
-    
-    <button [disabled]="get()">Click</button>
-    <input type="text"  [(ngModel)]="myProperty"/>
-    <h3>{{myProperty}}</h3>
+    <div [ngSwitch]="priority">
+        <h1 *ngSwitchCase="'high'">High priority Task</h1>
+        <h1 *ngSwitchCase="'medium'">Medium priority Task</h1>
+        <h1 *ngSwitchCase="'low'">Low priority Task</h1>
+        <h1 *ngSwitchDefault>Very Low Priority Task</h1>
+    </div>
 
+    <button (click)="toggle()">Toggle</button>
     `
 })
 export class HomeComponent {
-    //falsy "",false,0,Nan,undefined,null
-    private myProperty: string = "Hello angular";
+    show: boolean = true;
+    priority: string = "very low";
+   
 
-    //no side effects.fast
-    private get(): string {
-        return "From method";
-    }
-
-    private onClick(param) {
-        console.log("button clicked", param);
+    toggle(): void {
+        if (this.show) {
+            this.show = false;
+        }
+        else {
+            this.show = true;
+        }
     }
 }
 
-// expression, property, event, class, style and two way
+//ngIf, ngFor, ngSwitch, ngModel, ngClass ngStyle
