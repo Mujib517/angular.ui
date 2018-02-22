@@ -2,10 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-about',
-  template: `
-    <p>
-      about works!
-    </p>
-  `
+  templateUrl: './about.component.html'
 })
-export class AboutComponent {}
+export class AboutComponent { }
