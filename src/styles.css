@@ -1,4 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-.red{
+.fg{
+    color:green;
+}
+.bg{
+    background-color:green;
+}
+
+.fg2{
     color:red;
 }
