@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -17,12 +18,14 @@ import { Component } from '@angular/core';
     `
 })
 export class ProductListComponent {
-    products: any[];
+    products;
 
-    constructor() {
-        this.products = [{ id: 1, brand: "Nokia", model: "N8", price: 100, inStock: true, lastUpdated: Date.now() },
-        { id: 2, brand: "Nokia", model: "N9", price: 400, inStock: false, lastUpdated: Date.now() },
-        { id: 3, brand: "Samsung", model: "S8", price: 800, inStock: false, lastUpdated: Date.now() }];
+    constructor(private http: HttpClient) {
+        this.http.get("https://rest-node-api.herokuapp.com/api/products")
+        .subscribe(
+            (response)=>this.products=response["data"],
+            (err)=>console.log(err)
+        )
     }
 }
 //pipes : uppercase lowerccase titlecase currency date json async
