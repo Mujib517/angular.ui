@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ProductService } from '../shared/product.service';
+import { ConsoleLogger } from '../shared/console.logger';
 
 
 @Component({
@@ -15,13 +17,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductListComponent {
     products;
-
-    constructor(private http: HttpClient) {
-        this.http.get("https://rest-node-api.herokuapp.com/api/products")
-        .subscribe(
-            (response)=>this.products=response["data"],
-            (err)=>console.log(err)
-        )
+    //dependency injection. constructor injection
+    constructor(private svc: ProductService, private logger: ConsoleLogger) {
+        logger.error("Dummy error");
+        svc.get().subscribe(
+            (response) => this.products = response["data"],
+            (err) => console.log(err)
+        );
     }
 }
 //pipes : uppercase lowerccase titlecase currency date json async
