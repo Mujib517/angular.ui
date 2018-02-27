@@ -9,11 +9,12 @@ import { AboutComponent } from './about/about.component';
 import { ProductListComponent } from "./product-list/product-list.component";
 import { TimePipe } from "./shared/time.pipe";
 import { UsersComponent } from "./users/users.component";
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
     imports: [BrowserModule, FormsModule, HttpClientModule],
     declarations: [AppComponent, HomeComponent, 
-        AboutComponent, ProductListComponent, TimePipe,UsersComponent],
+        AboutComponent, ProductListComponent, TimePipe,UsersComponent, ProductComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule {

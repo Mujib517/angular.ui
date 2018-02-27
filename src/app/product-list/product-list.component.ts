@@ -6,12 +6,8 @@ import { HttpClient } from '@angular/common/http';
     selector: 'app-product-list',
     template: `<h1>Product List</h1>
     <div class="col-md-6">
-        <div *ngFor="let product of products" class="well">
-            <h3>{{product.brand | uppercase}}  {{product.model | lowercase}}</h3>
-            <div>{{product.price | currency}}</div>
-            <div>InStock: <input [disabled]="true" type="checkbox" [checked]="product.inStock"/>
-            <div>{{product.lastUpdated | date:'MM-dd-yyyy hh:mm'}}</div>
-            <div>{{product.lastUpdated | time}}</div>
+        <div *ngFor="let prod of products" class="well">
+            <app-product [product]="prod"></app-product>
             <hr/>
         </div>
     </div>

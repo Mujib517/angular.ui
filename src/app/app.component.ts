@@ -8,7 +8,7 @@ import { Component } from '@angular/core'; //es6 module
 
 @Component({
     selector: 'app-root', //snake casing
-    template: `<app-users></app-users> `
+    template: `<app-product-list></app-product-list> `
 })
 export class AppComponent {
 
