@@ -4,9 +4,13 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class ProductService {
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
     get() {
         return this.http.get("https://rest-node-api.herokuapp.com/api/products");
+    }
+
+    getById(id: string) {
+        return this.http.get(`https://rest-node-api.herokuapp.com/api/products/${id}`);
     }
 }

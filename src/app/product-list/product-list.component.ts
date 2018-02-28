@@ -19,7 +19,7 @@ export class ProductListComponent {
     products;
     //dependency injection. constructor injection
     constructor(private svc: ProductService, private logger: ConsoleLogger) {
-        logger.error("Dummy error");
+        //logger.error("Dummy error");
         svc.get().subscribe(
             (response) => this.products = response["data"],
             (err) => console.log(err)
