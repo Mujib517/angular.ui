@@ -15,11 +15,12 @@ import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { AppRouterModule } from "./shared/app.router.module";
+import { NewProductComponent } from './new-product/new-product.component';
 
 @NgModule({
     imports: [BrowserModule, FormsModule, HttpClientModule, SharedModule,AppRouterModule],
     declarations: [AppComponent, HomeComponent,
-        AboutComponent, ProductListComponent, UsersComponent, ProductComponent, HeaderComponent, FooterComponent, ContactComponent, ProductDetailComponent],
+        AboutComponent, ProductListComponent, UsersComponent, ProductComponent, HeaderComponent, FooterComponent, ContactComponent, ProductDetailComponent, NewProductComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -8,6 +8,7 @@ import { ConsoleLogger } from '../shared/console.logger';
     selector: 'app-product-list',
     template: `<h1>Product List</h1>
     <div class="col-md-6">
+    <a class="btn btn-danger" routerLink="/products/new">New Product</a>
         <div *ngFor="let prod of products" class="well">
             <app-product [product]="prod"></app-product>
             <hr/>
