@@ -17,6 +17,15 @@ import { ActivatedRoute } from '@angular/router';
           {{product?.lastUpdated | time}}
       </div>
    </div>
+   <div>
+      <ul class="nav-tabs nav">
+        <li routerLinkActive="active"><a routerLink="specs">Specs</a></li>
+        <li routerLinkActive="active"><a routerLink="reviews">Reviews</a></li>
+      </ul>
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+   </div>
   `,
   styles: []
 })
@@ -29,7 +38,10 @@ export class ProductDetailComponent {
 
     productSvc.getById(id)
       .subscribe(
-      (response) => this.product = response,
+      (response) => {
+        this.productSvc.reviews = response["reviews"];
+        this.product = response;
+      },
       (err) => console.log(err)
       )
   }

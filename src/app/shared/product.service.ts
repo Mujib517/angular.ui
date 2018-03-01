@@ -4,6 +4,8 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class ProductService {
 
+    reviews: any[];
+
     constructor(private http: HttpClient) { }
 
     get() {
