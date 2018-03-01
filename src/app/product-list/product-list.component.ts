@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ProductService } from '../shared/product.service';
 import { ConsoleLogger } from '../shared/console.logger';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -19,12 +20,13 @@ import { ConsoleLogger } from '../shared/console.logger';
 export class ProductListComponent {
     products;
     //dependency injection. constructor injection
-    constructor(private svc: ProductService, private logger: ConsoleLogger) {
+    constructor(private route: ActivatedRoute, private svc: ProductService, private logger: ConsoleLogger) {
+        this.products = this.route.snapshot.data.response.data;
         //logger.error("Dummy error");
-        svc.get().subscribe(
-            (response) => this.products = response["data"],
-            (err) => console.log(err)
-        );
+        // svc.get().subscribe(
+        //     (response) => this.products = response["data"],
+        //     (err) => console.log(err)
+        // );
     }
 }
 //pipes : uppercase lowerccase titlecase currency date json async

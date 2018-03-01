@@ -8,6 +8,7 @@ import { ProductDetailComponent } from "../product-detail/product-detail.compone
 import { NewProductComponent } from "../new-product/new-product.component";
 import { SpecsComponent } from "../specs/specs.component";
 import { ReviewsComponent } from "../reviews/reviews.component";
+import { ProductResolver } from "./product.resolver";
 
 const CHILDREN: Route[] = [
     { path: 'specs', component: SpecsComponent },
@@ -17,7 +18,7 @@ const CHILDREN: Route[] = [
 const ROUTES: Route[] = [{ path: '', component: HomeComponent },
 { path: 'about', component: AboutComponent },
 { path: 'contact', component: ContactComponent },
-{ path: 'products', component: ProductListComponent },
+{ path: 'products', component: ProductListComponent, resolve: { response: ProductResolver } },
 { path: 'products/new', component: NewProductComponent },
 { path: 'products/:id', component: ProductDetailComponent, children: CHILDREN },
 { path: '**', redirectTo: '' }];
