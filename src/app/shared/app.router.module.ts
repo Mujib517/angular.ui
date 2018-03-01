@@ -9,6 +9,7 @@ import { NewProductComponent } from "../new-product/new-product.component";
 import { SpecsComponent } from "../specs/specs.component";
 import { ReviewsComponent } from "../reviews/reviews.component";
 import { ProductResolver } from "./product.resolver";
+import { LazyComponent } from "../lazy/lazy.component";
 
 const CHILDREN: Route[] = [
     { path: 'specs', component: SpecsComponent },
@@ -21,6 +22,7 @@ const ROUTES: Route[] = [{ path: '', component: HomeComponent },
 { path: 'products', component: ProductListComponent, resolve: { response: ProductResolver } },
 { path: 'products/new', component: NewProductComponent },
 { path: 'products/:id', component: ProductDetailComponent, children: CHILDREN },
+// {path:'lazy',component:LazyComponent,loadChildren:'app/shared/lazy.module#LazyModule'},
 { path: '**', redirectTo: '' }];
 
 

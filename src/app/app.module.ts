@@ -18,11 +18,12 @@ import { AppRouterModule } from "./shared/app.router.module";
 import { NewProductComponent } from './new-product/new-product.component';
 import { SpecsComponent } from './specs/specs.component';
 import { ReviewsComponent } from './reviews/reviews.component';
+import { LazyComponent } from './lazy/lazy.component';
 
 @NgModule({
     imports: [BrowserModule, FormsModule, HttpClientModule, SharedModule,AppRouterModule],
     declarations: [AppComponent, HomeComponent,
-        AboutComponent, ProductListComponent, UsersComponent, ProductComponent, HeaderComponent, FooterComponent, ContactComponent, ProductDetailComponent, NewProductComponent, SpecsComponent, ReviewsComponent],
+        AboutComponent, ProductListComponent, UsersComponent, ProductComponent, HeaderComponent, FooterComponent, ContactComponent, ProductDetailComponent, NewProductComponent, SpecsComponent, ReviewsComponent, LazyComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule {
