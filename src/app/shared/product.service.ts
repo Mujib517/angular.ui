@@ -16,7 +16,11 @@ export class ProductService {
         return this.http.get(`https://rest-node-api.herokuapp.com/api/products/${id}`);
     }
 
-    delete(id:string){
+    delete(id: string) {
         return this.http.delete(`https://rest-node-api.herokuapp.com/api/products/${id}`);
+    }
+
+    save(product: any) {
+        return this.http.post("https://rest-node-api.herokuapp.com/api/products", product);
     }
 }
