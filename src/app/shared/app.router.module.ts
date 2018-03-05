@@ -22,7 +22,7 @@ const ROUTES: Route[] = [{ path: '', component: HomeComponent },
 { path: 'products', component: ProductListComponent, resolve: { response: ProductResolver } },
 { path: 'products/new', component: NewProductComponent },
 { path: 'products/:id', component: ProductDetailComponent, children: CHILDREN },
-// {path:'lazy',component:LazyComponent,loadChildren:'app/shared/lazy.module#LazyModule'},
+{ path: 'lazy', component: LazyComponent, loadChildren: 'app/shared/lazy.module#LazyModule' },
 { path: '**', redirectTo: '' }];
 
 
