@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../shared/product.service';
-
+//required, minlen, maxlen, pattern
+//template driven
+// reactive forms
 @Component({
   selector: 'app-new-product',
   template: `
@@ -14,10 +16,10 @@ import { ProductService } from '../shared/product.service';
       Failed to save please try again later
    </div>
 
-
+  <form novalidate #frm="ngForm">
    <div class="col-md-5">
       <div class="form-group">
-      <select class="form-control" [(ngModel)]="product.brand">
+      <select class="form-control" required="true" [(ngModel)]="product.brand" name="brand">
         <option>Apple</option>
         <option>Sony</option>
         <option>Samsung</option>
@@ -26,19 +28,21 @@ import { ProductService } from '../shared/product.service';
          
       </div>
       <div class="form-group">
-          <input type="text" placeholder="Model" class="form-control" [(ngModel)]="product.model"/>
+          <input type="text" placeholder="Model"  minlength="3" maxlength="10"
+          class="form-control" required="true" name="model" [(ngModel)]="product.model"/>
       </div>
       <div class="form-group">
-          <input type="text" placeholder="Price" class="form-control" [(ngModel)]="product.price"/>
+          <input type="text" placeholder="Price" 
+          class="form-control" required="true" name="price" [(ngModel)]="product.price" pattern="[0-9]{3,4}"/>
       </div>
       <div class="form-group">
-          InStock: <input type="checkbox" [(ngModel)]="product.inStock"/>
+          InStock: <input type="checkbox" [(ngModel)]="product.inStock" name="inStock"/>
       </div>
       <div class="form-group">
-         <button class="btn btn-success" (click)="onSave()">Save Product</button>
+         <button [disabled]="frm.invalid" class="btn btn-success" (click)="onSave()">Save Product</button>
       </div>
    </div>
-
+<form>
 
   `
 })
