@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
     <div class="col-md-6">
     <a class="btn btn-danger" routerLink="/products/new">New Product</a>
         <div *ngFor="let prod of products" class="well">
-            <app-product [product]="prod"></app-product>
+            <app-product [product]="prod" (notify)="onNotify()"></app-product>
             <hr/>
         </div>
     </div>
@@ -22,11 +22,13 @@ export class ProductListComponent {
     //dependency injection. constructor injection
     constructor(private route: ActivatedRoute, private svc: ProductService, private logger: ConsoleLogger) {
         this.products = this.route.snapshot.data.response.data;
-        //logger.error("Dummy error");
-        // svc.get().subscribe(
-        //     (response) => this.products = response["data"],
-        //     (err) => console.log(err)
-        // );
+    }
+
+    onNotify(data) {
+        this.svc.get().subscribe(
+            (response) => this.products = response["data"],
+            (err) => console.log(err)
+        );
     }
 }
 //pipes : uppercase lowerccase titlecase currency date json async
