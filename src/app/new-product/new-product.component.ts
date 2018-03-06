@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../shared/product.service';
+import { Router } from '@angular/router';
 //required, minlen, maxlen, pattern
 //template driven
 // reactive forms
@@ -82,7 +83,7 @@ export class NewProductComponent {
   success: boolean = false;
   error: boolean = false;
 
-  constructor(private svc: ProductService) { }
+  constructor(private svc: ProductService, private router: Router) { }
 
   onSave() {
     this.svc.save(this.product)
@@ -91,6 +92,7 @@ export class NewProductComponent {
         console.log("Saved Successfully");
         this.product = {};
         this.success = true;
+        this.router.navigate(["/products"]);
       },
       (err) => this.error = true
       )
