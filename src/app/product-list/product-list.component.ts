@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ProductService } from '../shared/product.service';
 import { ConsoleLogger } from '../shared/console.logger';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from '../shared/models/product.model';
 
 
 @Component({
@@ -19,7 +20,7 @@ import { ActivatedRoute } from '@angular/router';
     `
 })
 export class ProductListComponent {
-    products;
+    products: Product[];
     //dependency injection. constructor injection
     constructor(private route: ActivatedRoute, private svc: ProductService, private logger: ConsoleLogger) {
         this.products = this.route.snapshot.data.response.data;

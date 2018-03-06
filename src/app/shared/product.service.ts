@@ -1,5 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Product } from "./models/product.model";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class ProductService {
@@ -8,12 +10,12 @@ export class ProductService {
 
     constructor(private http: HttpClient) { }
 
-    get() {
-        return this.http.get("https://rest-node-api.herokuapp.com/api/products");
+    get(): Observable<Product[]> {
+        return this.http.get<Product[]>("https://rest-node-api.herokuapp.com/api/products");
     }
 
-    getById(id: string) {
-        return this.http.get(`https://rest-node-api.herokuapp.com/api/products/${id}`);
+    getById(id: string): Observable<Product> {
+        return this.http.get<Product>(`https://rest-node-api.herokuapp.com/api/products/${id}`);
     }
 
     delete(id: string) {
