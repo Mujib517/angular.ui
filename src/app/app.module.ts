@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from "./shared/shared.module";
 
 import { AppComponent } from "./app.component";
@@ -22,7 +21,7 @@ import { LazyComponent } from './lazy/lazy.component';
 import { ReactFormComponent } from './react-form/react-form.component';
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule, SharedModule, AppRouterModule],
+    imports: [BrowserModule, FormsModule, ReactiveFormsModule, SharedModule, AppRouterModule],
     declarations: [AppComponent, HomeComponent,
         AboutComponent, ProductListComponent, UsersComponent, ProductComponent, HeaderComponent, FooterComponent, ContactComponent, ProductDetailComponent, NewProductComponent, SpecsComponent, ReviewsComponent, LazyComponent, ReactFormComponent],
     bootstrap: [AppComponent]
