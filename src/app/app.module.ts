@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from "./shared/shared.module";
 
@@ -19,11 +19,12 @@ import { NewProductComponent } from './new-product/new-product.component';
 import { SpecsComponent } from './specs/specs.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { LazyComponent } from './lazy/lazy.component';
+import { ReactFormComponent } from './react-form/react-form.component';
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, HttpClientModule, SharedModule,AppRouterModule],
+    imports: [BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule, SharedModule, AppRouterModule],
     declarations: [AppComponent, HomeComponent,
-        AboutComponent, ProductListComponent, UsersComponent, ProductComponent, HeaderComponent, FooterComponent, ContactComponent, ProductDetailComponent, NewProductComponent, SpecsComponent, ReviewsComponent, LazyComponent],
+        AboutComponent, ProductListComponent, UsersComponent, ProductComponent, HeaderComponent, FooterComponent, ContactComponent, ProductDetailComponent, NewProductComponent, SpecsComponent, ReviewsComponent, LazyComponent, ReactFormComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule {
