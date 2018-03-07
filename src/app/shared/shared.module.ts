@@ -6,11 +6,16 @@ import { ConsoleLogger } from "./console.logger";
 import { FileLogger } from "./file.logger";
 import { TimePipe } from "./time.pipe";
 import { ProductResolver } from "./product.resolver";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { ProductInterceptor } from "./product.interceptor";
+import { UserService } from "./user.service";
 
 @NgModule({
     imports: [HttpClientModule],
     declarations: [TimePipe], //view related. comoponents, pipes, directives
-    providers: [ProductService, ProductResolver, { provide: ConsoleLogger, useClass: FileLogger }],
+    providers: [ProductService, ProductResolver,UserService,
+        { provide: HTTP_INTERCEPTORS, useClass: ProductInterceptor, multi: true },
+        { provide: ConsoleLogger, useClass: FileLogger }],
     exports: [TimePipe]
 })
 export class SharedModule { }

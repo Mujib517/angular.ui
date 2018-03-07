@@ -13,6 +13,9 @@ import { Component } from '@angular/core';
           <li><a routerLink="/contact">Contact</a></li>
           <li><a routerLink="/lazy">Lazy</a></li>
       </ul>
+      <div class="pull-right">
+        <a routerLink="/login" class="btn btn-primary btn-sm">Login</a>
+      </div>
   </div>
 </header>
   `
