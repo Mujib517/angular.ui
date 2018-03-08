@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../shared/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -22,12 +23,19 @@ import { UserService } from '../shared/user.service';
 export class LoginComponent {
   user: any = {};
 
-  constructor(private userSvc: UserService) { }
+  constructor(private userSvc: UserService, private router: Router) {
+    if (this.userSvc.isLoggedin) {
+      this.router.navigate(["/products"]);
+    }
+  }
 
   onLogin() {
     this.userSvc.login(this.user)
       .subscribe(
-      (response) => console.log(response),
+      (response) => {
+        this.userSvc.saveToken(response.token);
+        this.router.navigate(["/products"]);
+      },
       (err) => console.log(err)
       )
   }

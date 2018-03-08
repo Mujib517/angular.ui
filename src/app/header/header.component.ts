@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UserService } from '../shared/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -14,10 +16,23 @@ import { Component } from '@angular/core';
           <li><a routerLink="/lazy">Lazy</a></li>
       </ul>
       <div class="pull-right">
-        <a routerLink="/login" class="btn btn-primary btn-sm">Login</a>
+        <a *ngIf="!isLoggedin" routerLink="/login" class="btn btn-primary btn-sm">Login</a>
+        <button *ngIf="isLoggedin" (click)="onLogout()" class="btn btn-primary btn-sm">Logout</button>
       </div>
   </div>
 </header>
   `
 })
-export class HeaderComponent{}
+export class HeaderComponent {
+  isLoggedin: boolean;
+
+  constructor(private userSvc: UserService,private router:Router) {
+    this.isLoggedin = userSvc.isLoggedin();
+  }
+
+  onLogout() {
+    this.userSvc.logout();
+    this.isLoggedin = this.userSvc.isLoggedin();
+    this.router.navigate(["/login"]);
+  }
+}

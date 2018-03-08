@@ -6,12 +6,13 @@ import { Observable } from "rxjs/Observable";
 export class ProductInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        var headers = {
-            authorization: 'abc-def-ghi'
-        };
 
-        var newReq = req.clone({ headers: req.headers.set("authorization", "abc-def-ghi") });
-
-        return next.handle(newReq);
+        var token = localStorage.getItem("token");
+        if (token) {
+            var newReq = req.clone({ headers: req.headers.set("authorization", token) });
+            return next.handle(newReq);
+        }
+        
+        return next.handle(req);
     }
 }

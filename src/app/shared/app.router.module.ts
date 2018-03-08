@@ -12,6 +12,7 @@ import { ProductResolver } from "./product.resolver";
 import { LazyComponent } from "../lazy/lazy.component";
 import { ReactFormComponent } from "../react-form/react-form.component";
 import { LoginComponent } from "../login/login.component";
+import { ProductGaurd } from "./product.gaurd";
 
 const CHILDREN: Route[] = [
     { path: 'specs', component: SpecsComponent },
@@ -20,9 +21,9 @@ const CHILDREN: Route[] = [
 
 const ROUTES: Route[] = [{ path: '', component: HomeComponent },
 { path: 'about', component: AboutComponent },
-{ path: 'contact', component: ContactComponent },
+{ path: 'contact', component: ContactComponent, canActivate: [ProductGaurd] },
 { path: 'products', component: ProductListComponent, resolve: { response: ProductResolver } },
-{ path: 'products/new', component: NewProductComponent },
+{ path: 'products/new', component: NewProductComponent,canDeactivate:[ProductGaurd] },
 { path: 'products/new-reactive', component: ReactFormComponent },
 { path: 'products/:id', component: ProductDetailComponent, children: CHILDREN },
 { path: 'lazy', component: LazyComponent, loadChildren: 'app/shared/lazy.module#LazyModule' },
