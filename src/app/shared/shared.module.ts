@@ -11,13 +11,14 @@ import { ProductInterceptor } from "./product.interceptor";
 import { UserService } from "./user.service";
 import { ProductGaurd } from "./product.gaurd";
 import { ShowDirective } from "./show.directive";
+import { IfDirective } from "./if.directive";
 
 @NgModule({
     imports: [HttpClientModule],
-    declarations: [TimePipe, ShowDirective], //view related. comoponents, pipes, directives
+    declarations: [TimePipe, ShowDirective, IfDirective], //view related. comoponents, pipes, directives
     providers: [ProductService, ProductResolver, UserService, ProductGaurd,
         { provide: HTTP_INTERCEPTORS, useClass: ProductInterceptor, multi: true },
         { provide: ConsoleLogger, useClass: FileLogger }],
-    exports: [TimePipe, ShowDirective]
+    exports: [TimePipe, ShowDirective, IfDirective]
 })
 export class SharedModule { }
