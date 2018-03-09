@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ProductService } from '../shared/product.service';
 import { ConsoleLogger } from '../shared/console.logger';
@@ -19,7 +19,11 @@ import { Product } from '../shared/models/product.model';
     </div>
     `
 })
-export class ProductListComponent {
+export class ProductListComponent implements DoCheck {
+
+    ngDoCheck(): void {
+        console.log("Product list change detection ");
+    }
     products: Product[];
     //dependency injection. constructor injection
     constructor(private route: ActivatedRoute, private svc: ProductService, private logger: ConsoleLogger) {
@@ -32,5 +36,7 @@ export class ProductListComponent {
             (err) => console.log(err)
         );
     }
+
+
 }
 //pipes : uppercase lowerccase titlecase currency date json async

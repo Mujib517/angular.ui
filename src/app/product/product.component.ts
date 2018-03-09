@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, DoCheck, OnChanges, SimpleChanges } from '@angular/core';
 import { ProductService } from '../shared/product.service';
 
 @Component({
@@ -14,7 +14,15 @@ import { ProductService } from '../shared/product.service';
     </div>
   `
 })
-export class ProductComponent {
+export class ProductComponent implements DoCheck, OnChanges {
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("inside on changes", changes);
+  }
+  ngDoCheck(): void {
+    console.log("Product change detection");
+  }
+
+
   @Input()
   product;
 
