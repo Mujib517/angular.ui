@@ -4,7 +4,7 @@ import { RouterModule } from "@angular/router";
 
 @NgModule({
     imports: [RouterModule.forChild([])],
-    declarations: [],
+    declarations: [Lazy2Component],
     exports: []
 })
 export class LazyModule { }
