@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ConsoleLogger } from '../shared/console.logger';
 
 @Component({
   selector: 'app-contact',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
     <h1>Contact Page</h1>
   `
 })
-export class ContactComponent{}
+export class ContactComponent {
+  constructor(private logger: ConsoleLogger) { }
+
+  ngOnInit() {
+    this.logger.warn("Test Logging");
+  }
+}
