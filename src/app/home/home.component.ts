@@ -15,11 +15,9 @@ export class HomeComponent implements OnInit, OnChanges, OnDestroy, DoCheck {
 
 
     count: number;
-    timer;
-
+   
     constructor(private logger: ConsoleLogger, private http: HttpClient) {
         this.count = 0;
-        this.timer = setInterval(() => this.count++, 1000);
     }
 
     ngOnChanges() {
@@ -40,7 +38,6 @@ export class HomeComponent implements OnInit, OnChanges, OnDestroy, DoCheck {
     }
 
     ngOnDestroy(): void {
-        clearInterval(this.timer);
         console.log("Destoryed");
     }
 
