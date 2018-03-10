@@ -4,6 +4,10 @@ import { Component } from '@angular/core';
   selector: 'app-about',
   templateUrl: './about.component.html'
 })
-export class AboutComponent { 
-  
+export class AboutComponent {
+  counter: number = 10;
+
+  inc() {
+    this.counter++;
+  }
 }
