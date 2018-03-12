@@ -1,21 +1,30 @@
-import { Component, OnInit, OnChanges, OnDestroy, DoCheck } from "@angular/core";
+import { Component, OnInit, OnChanges, OnDestroy, DoCheck, ViewEncapsulation } from "@angular/core";
 import { ConsoleLogger } from "../shared/console.logger";
 import { HttpClient } from "@angular/common/http";
 
+//view encapsulation
+//shadow dom
 @Component({
     selector: 'app-home',
+    encapsulation: ViewEncapsulation.Emulated,
     template: `
        <h1>Home Page</h1>
       
        <h1>{{count}}</h1>
        <button (click)="inc()">++</button>
-    `
+    `,
+    styles: [`h1 
+    {
+        color:red;
+        background-color:yellow
+    }
+    `]
 })
 export class HomeComponent implements OnInit, OnChanges, OnDestroy, DoCheck {
 
 
     count: number;
-   
+
     constructor(private logger: ConsoleLogger, private http: HttpClient) {
         this.count = 0;
     }
